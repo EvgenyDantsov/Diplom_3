@@ -1,5 +1,6 @@
 package page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,46 +26,56 @@ public class MainPage {
         this.driver = driver;
     }
 
+    @Step("Click on login user button")
     public void loginUserClick() {
         driver.findElement(loginAccountButton).click();
     }
 
+    @Step("Click on personal account button")
     public void personalAccountClick() {
         driver.findElement(personalAccount).click();
     }
 
+    @Step("Click on buns tab")
     public void bunsTabClick() {
         driver.findElement(bunsTab).click();
     }
 
+    @Step("Click on sauces tab")
     public void saucesTabClick() {
         driver.findElement(saucesTab).click();
     }
 
+    @Step("Click on fillings tab")
     public void fillingsTabClick() {
         driver.findElement(fillingsTab).click();
     }
 
+    @Step("Check if buns text is displayed")
     public boolean bunsTextIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(bunsText));
         return driver.findElement(bunsText).isDisplayed();
     }
 
+    @Step("Check if create order button is displayed")
     public boolean createOrderButtonIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(createOrderButton));
         return driver.findElement(createOrderButton).isDisplayed();
     }
 
+    @Step("Check if collect burgers text is displayed")
     public boolean collectBurgersTextIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(collectBurgersText));
         return driver.findElement(collectBurgersText).isDisplayed();
     }
 
+    @Step("Check if sauces text is displayed")
     public boolean saucesTextIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(saucesText));
         return driver.findElement(saucesText).isDisplayed();
     }
 
+    @Step("Check if fillings text is displayed")
     public boolean fillingsTextIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(fillingsText));
         return driver.findElement(fillingsText).isDisplayed();
