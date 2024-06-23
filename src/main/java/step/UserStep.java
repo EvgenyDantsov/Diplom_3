@@ -11,15 +11,17 @@ public class UserStep {
     private static final String REGISTER_USER = "/api/auth/register";
     public static final String DELETED_USER = "/api/auth/user";
     public static final String LOGIN_USER = "/api/auth/login";
+
     @Step("Create user")
-    public ValidatableResponse createUser(User user) {
-        return given()
+    public void createUser(User user) {
+        given()
                 .contentType(ContentType.JSON)
                 .body(user)
                 .when()
                 .post(REGISTER_USER)
                 .then();
     }
+
     @Step("Get user access token")
     public String getUserToken(String email, String password) {
         return given()
@@ -32,6 +34,7 @@ public class UserStep {
                 .path("accessToken")
                 .toString();
     }
+
     @Step("Delete the user")
     public void deleteUser(String accessToken) {
         given()
