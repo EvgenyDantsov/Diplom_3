@@ -8,7 +8,7 @@ import page.AccountProfilePage;
 import page.MainPage;
 import util.BaseTest;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class ConstructorTest extends BaseTest {
     //Константа для выбора браузера в котором тестируем
@@ -33,21 +33,21 @@ public class ConstructorTest extends BaseTest {
         //т.к. в начале открытия страницы у нас по умолчанию открыт раздел 'Булки'
         mainPage.fillingsTabClick();
         mainPage.bunsTabClick();
-        assertTrue("Не работает переход на 'Булки'", mainPage.bunsTextIsDisplayed());
+        assertEquals("Не работает переход на 'Булки'", "Булки", mainPage.getActionTabText());
     }
 
     @Test
     @DisplayName("Navigation to sauces tab")
     public void saucesTabNavigationTest() {
         mainPage.saucesTabClick();
-        assertTrue("Не работает переход на 'Соусы'", mainPage.saucesTextIsDisplayed());
+        assertEquals("Не работает переход на 'Соусы'", "Соусы", mainPage.getActionTabText());
     }
 
     @Test
     @DisplayName("Navigation to fillings tab")
     public void fillingsTabNavigationTest() {
         mainPage.fillingsTabClick();
-        assertTrue("Не работает переход на 'Начинки'", mainPage.fillingsTextIsDisplayed());
+        assertEquals("Не работает переход на 'Начинки'", "Начинки", mainPage.getActionTabText());
     }
 
     @After
