@@ -37,19 +37,16 @@ public class MainPage {
 
     @Step("Click on buns tab")
     public void bunsTabClick() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(bunsTab));
         driver.findElement(bunsTab).click();
     }
 
     @Step("Click on sauces tab")
     public void saucesTabClick() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(saucesTab));
         driver.findElement(saucesTab).click();
     }
 
     @Step("Click on fillings tab")
     public void fillingsTabClick() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(fillingsTab));
         driver.findElement(fillingsTab).click();
     }
 
