@@ -66,6 +66,7 @@ public class MainPage {
 
     }
 
+    @Step("Get text of the active tab")
     public String getActionTabText() {
         return driver.findElement(activeTab).getText();
     }
