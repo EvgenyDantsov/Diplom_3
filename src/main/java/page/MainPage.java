@@ -14,11 +14,10 @@ public class MainPage {
     private final By createOrderButton = By.xpath("//button[(text()='Оформить заказ')]");
     private final By collectBurgersText = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']/h1[text()='Соберите бургер']");
     private final By bunsTab = By.xpath("//span[contains(@class, 'text_type_main-default') and text()='Булки']");
-    private final By bunsText = By.xpath("//h2[contains(@class, 'text_type_main-medium') and text()='Булки']");
     private final By saucesTab = By.xpath("//span[contains(@class, 'text_type_main-default') and text()='Соусы']");
-    private final By saucesText = By.xpath("//h2[contains(@class, 'text_type_main-medium') and text()='Соусы']");
     private final By fillingsTab = By.xpath("//span[contains(@class, 'text_type_main-default') and text()='Начинки']");
-    private final By fillingsText = By.xpath("//h2[contains(@class, 'text_type_main-medium') and text()='Начинки']");
+    // Локатор для активной вкладки
+    private final By activeTab = By.xpath("//div[contains(@class, 'tab_tab_type_current__2BEPc')]");
     //Объект WebDriver, используется для взаимодействия с браузером
     private final WebDriver driver;
 
@@ -38,23 +37,20 @@ public class MainPage {
 
     @Step("Click on buns tab")
     public void bunsTabClick() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(bunsTab));
         driver.findElement(bunsTab).click();
     }
 
     @Step("Click on sauces tab")
     public void saucesTabClick() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(saucesTab));
         driver.findElement(saucesTab).click();
     }
 
     @Step("Click on fillings tab")
     public void fillingsTabClick() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(fillingsTab));
         driver.findElement(fillingsTab).click();
-    }
-
-    @Step("Check if buns text is displayed")
-    public boolean bunsTextIsDisplayed() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(bunsText));
-        return driver.findElement(bunsText).isDisplayed();
     }
 
     @Step("Check if create order button is displayed")
@@ -67,17 +63,10 @@ public class MainPage {
     public boolean collectBurgersTextIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(collectBurgersText));
         return driver.findElement(collectBurgersText).isDisplayed();
+
     }
 
-    @Step("Check if sauces text is displayed")
-    public boolean saucesTextIsDisplayed() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(saucesText));
-        return driver.findElement(saucesText).isDisplayed();
-    }
-
-    @Step("Check if fillings text is displayed")
-    public boolean fillingsTextIsDisplayed() {
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(fillingsText));
-        return driver.findElement(fillingsText).isDisplayed();
+    public String getActionTabText() {
+        return driver.findElement(activeTab).getText();
     }
 }
